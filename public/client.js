@@ -26,6 +26,7 @@ function sendMessage(message) {
         user: username,
         message: message.trim()
     };
+    id++;
     // Append
     appendMessage(msg, 'outgoing');
     textarea.value = '';
@@ -39,7 +40,6 @@ function sendMessage(message) {
 function appendMessage(wrappedMsg, type) {
     let mainDiv = document.createElement('div');
     let className = type;
-    console.log(wrappedMsg);
     mainDiv.classList.add(className, 'message');
     mainDiv.setAttribute('data-id', wrappedMsg.id);  
 
