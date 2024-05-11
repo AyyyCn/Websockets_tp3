@@ -2,15 +2,14 @@ const socket = io();
 let username;
 let textarea = document.querySelector('#textarea');
 let messageArea = document.querySelector('.message__area');
-const pingSound = document.getElementById('pingSound');
 let id = 0;
 do {
-    username = prompt('Please enter your name: ');
+    username = prompt('Veuillez entrer votre nom');
 } while (!username);
 
 textarea.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) { // Modify to send on Enter key press only (without Shift key)
-        e.preventDefault(); // Prevents the newline character from being inserted
+    if (e.key === 'Enter' && !e.shiftKey) { 
+        e.preventDefault(); 
         sendMessage(e.target.value);
     }
 });
@@ -30,7 +29,7 @@ function sendMessage(message) {
     // Append
     appendMessage(msg, 'outgoing');
     textarea.value = '';
-    textarea.style.height = ''; // Reset the textarea height
+    textarea.style.height = ''; 
     scrollToBottom();
 
     // Send to server
@@ -42,7 +41,7 @@ function appendMessage(wrappedMsg, type) {
     let className = type;
     console.log(wrappedMsg);
     mainDiv.classList.add(className, 'message');
-    mainDiv.setAttribute('data-id', wrappedMsg.id);  // Set data-id attribute for unique identification
+    mainDiv.setAttribute('data-id', wrappedMsg.id);  
 
     let markup = `
         <h4>${wrappedMsg.user}</h4>
@@ -70,14 +69,11 @@ function appendMessage(wrappedMsg, type) {
     emojis.forEach(emoji => {
         emoji.addEventListener('click', () => {
             const emojiText = emoji.textContent;
-            //mainDiv.querySelector('.reactions-display').textContent += emojiText;  // Update the reactions display
-            socket.emit('emoji_reaction', { messageId: wrappedMsg.id, emoji: emojiText });  // Emit the reaction to the server
+            socket.emit('emoji_reaction', { messageId: wrappedMsg.id, emoji: emojiText });
         });
     });
 
-    if (type === 'incoming') {
-        //pingSound.play();
-    }
+  
 }
 socket.on('id', (serverID) => {
     console.log('ID received from server');
@@ -107,6 +103,6 @@ function scrollToBottom() {
 
 // Update textarea height dynamically based on content
 textarea.addEventListener('input', () => {
-    textarea.style.height = ''; // Reset the textarea height
+    textarea.style.height = ''; 
     textarea.style.height = `${textarea.scrollHeight}px`;
 });

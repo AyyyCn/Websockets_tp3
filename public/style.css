@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #D6EAF8;
+    font-family: 'Roboto', sans-serif;
+}
+
+section.chat__section {
+    width: 800px;
+    max-width: 90%;
+    background: #AED6F1;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 20px; /* Added border radius */
+    padding: 20px; /* Added padding */
+    position: relative; /* Added position for pseudo-element */
+}
+
+section.chat__section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #AED6F1; /* Same color as section background */
+}
+
+.brand {
+    padding: 20px;
+    background: #5DADE2;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 20px; /* Added border radius */
+    border-top-right-radius: 20px; /* Added border radius */
+}
+
+.brand h1 {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
+
+.message__area {
+    height: 500px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 40px;
+}
+
+textarea {
+    width: calc(100% - 40px);
+    border: 2px solid #85C1E9;
+    padding: 20px;
+    font-size: 16px;
+    outline: none;
+    background: #EBF5FB;
+    margin-right: 10px;
+}
+
+.message {
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    max-width: 300px;
+    position: relative;
+    background: #F2F3F4;
+    color: #2C3E50;
+}
+
+.incoming {
+    color: #707B7C;
+}
+
+.outgoing {
+    background: #E8DAEF;
+    color: #707B7C;
+    margin-left: auto;
+}
+
+.message h4 {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #2C3E50;
+    font-size: 14px;
+}
+
+.input__container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+button#sendButton {
+    padding: 10px 20px;
+    border: none;
+    background: #3498DB;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button#sendButton:hover {
+    background: #2980B9;
+}
